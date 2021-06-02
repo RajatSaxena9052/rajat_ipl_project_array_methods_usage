@@ -24,14 +24,14 @@ function main() {
 
                     let calculatedValues = {
                         matchPlayedPerYear: matchesPlayedPerYear(matches),
-                       /*  matchWonPerTeam: matchesWonPerTeamPerYear(matches),
+                        matchWonPerTeam: matchesWonPerTeamPerYear(matches),
                         extraRuns: extraRunsConcededPerTeam2016(matches, deliveries),
                         tenEconomicPlayer: top10EconomicalBowlers2015(matches, deliveries),
                         wonTossAndMatch: teamsWonTossMatch(matches),
                         winnerOfPlayerOfMatch: playerOfMatch(matches),
                         strikeRate: batsmanStrikeRate(matches, deliveries),
                         playerDismissed: dismissedPlayer(deliveries),
-                        superOverEconomy: superOver(deliveries) */
+                        superOverEconomy: superOver(deliveries)
                     };
 
                     convertAndSave(calculatedValues);
@@ -49,7 +49,7 @@ function convertAndSave(calculatedValues) {
         }
     });
 
-    /* fs.writeFile("src/public/output/matchesWonPerTeam.json", JSON.stringify(calculatedValues.matchWonPerTeam, null, 2), 'utf8', (error) => {
+    fs.writeFile("src/public/output/matchesWonPerTeam.json", JSON.stringify(calculatedValues.matchWonPerTeam, null, 2), 'utf8', (error) => {
         if (error) {
             return error;
         } else {
@@ -111,7 +111,7 @@ function convertAndSave(calculatedValues) {
         } else {
             console.log("outputfile bestSuperOverBowler.json is created");
         }
-    }); */
+    });
 
 }
 
