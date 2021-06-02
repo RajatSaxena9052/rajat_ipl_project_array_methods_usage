@@ -3,10 +3,9 @@ function extraRunsConcededPerTeam2016(matchArray, deliveriesArray) {
 
         let matchIds = matchArray.reduce((accumulator, matches) => {
             let year = matches.season;
+            let matchId = matches.id;
 
-            if (year == 2016) {
-                let matchId = matches.id
-
+            if (year === '2016') {
                 accumulator.add(matchId);
             }
 
