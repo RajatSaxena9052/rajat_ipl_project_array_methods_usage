@@ -14,9 +14,8 @@ function batsmanStrikeRate(matchesArray, deliveriesArray) {
             return accumulator;
 
         }, {});
-        //console.log(Object.entries(yearWithIds))
 
-        let result = Object.entries(yearWithIds)
+        let batsmanWithStrikeRate = Object.entries(yearWithIds)
             .reduce((accumulator, yearId) => {
                 let allBatsmanName = deliveriesArray.reduce((accumulator, delivery) => {
                     let oneMatchIdPerSeason = yearId[1][0];
@@ -28,57 +27,43 @@ function batsmanStrikeRate(matchesArray, deliveriesArray) {
                             accumulator.push(name);
                         }
                     }
-                    return accumulator;
-                }, []);
-                //console.log(allBatsmanName[0])
 
-                accumulator[yearId[0]] = deliveriesArray.reduce((accum, deliveries) => {
+                    return accumulator;
+
+                }, []);
+
+
+                accumulator[yearId[0]] = deliveriesArray.reduce((accumulator, deliveries) => {
                     if (yearId[1].indexOf(deliveries["match_id"]) !== -1 && deliveries["batsman"] === allBatsmanName[0]) {
 
-                        if (accum[allBatsmanName[0]] === undefined) {
-                            accum[allBatsmanName[0]] = {
+                        if (accumulator[allBatsmanName[0]] === undefined) {
+
+                            accumulator[allBatsmanName[0]] = {
                                 bowls: 0,
                                 runs: 0,
                                 strikeRate: 0
                             };
+
                         } else {
 
-                            accum[allBatsmanName[0]]["bowls"] += 1;
-                            accum[allBatsmanName[0]]["runs"] += parseInt(deliveries["batsman_runs"]);
-                            accum[allBatsmanName[0]]["strikeRate"] = ((accum[allBatsmanName[0]]["runs"] / accum[allBatsmanName[0]]["bowls"]) * 100).toFixed(3)
+                            accumulator[allBatsmanName[0]]["bowls"] += 1;
+                            accumulator[allBatsmanName[0]]["runs"] += parseInt(deliveries["batsman_runs"]);
+                            accumulator[allBatsmanName[0]]["strikeRate"] = ((accumulator[allBatsmanName[0]]["runs"] / accumulator[allBatsmanName[0]]["bowls"]) * 100).toFixed(3);
 
                         }
+
                     }
-                    return accum
+
+                    return accumulator;
                 }, {});
 
-
-                return accumulator
+                return accumulator;
 
             }, {});
 
-        console.log(result)
+        return batsmanWithStrikeRate;
 
-        // for (let season in yearWithIds) {
-        //     let batsman = {}
-        //  
-
-        //     let name = Object.keys(batsman)[0]
-
-        //     for (let id of yearWithIds[season]) {
-        //         for (let deliveries of deliveriesArray) {
-        //             if (deliveries["match_id"] == id && deliveries["batsman"] == name) {
-        //                 batsman[name]["bowls"] += 1
-        //                 batsman[name]["runs"] += parseInt(deliveries["batsman_runs"])
-        //             }
-        //         }
-        //     }
-        //     batsman[name]["strikeRate"] = ((batsman[name]["runs"] / batsman[name]["bowls"]) * 100).toFixed(3)
-        //     yearWithIds[season] = batsman
-        // }
-
-        // return yearWithIds
     }
-    return {}
+    return {};
 }
-module.exports = batsmanStrikeRate
+module.exports = batsmanStrikeRate;
