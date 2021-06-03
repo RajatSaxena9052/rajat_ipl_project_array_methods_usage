@@ -42,7 +42,59 @@ function main() {
 
 function convertAndSave(calculatedValues) {
 
-    outputFileGenerator("src/public/output/matchesPerYear.json", calculatedValues.matchPlayedPerYear, "outputfile matchesPerYear.json is created");
+    outputFileGenerator("matchesPerYear.json", calculatedValues.matchPlayedPerYear, "outputfile matchesPerYear.json is created").then(data => {
+        console.log(data);
+
+        return outputFileGenerator("matchesWonPerTeam.json", calculatedValues.matchWonPerTeam, "outputfile matchesWonPerTeam.json is created");
+    }).then(data => {
+        console.log(data);
+
+        return outputFileGenerator("extraRuns2016.json", calculatedValues.extraRuns, "outputfile extraRuns2016.json is created");
+    }).then(data => {
+        console.log(data);
+
+        return outputFileGenerator("economicalBowlers2015.json", calculatedValues.tenEconomicPlayer, "outputfile economicalBowlers2015.json is created");
+    }).then(data => {
+        console.log(data);
+
+        return outputFileGenerator("teamsWonTossMatch.json", calculatedValues.wonTossAndMatch, "outputfile teamsWonTossMatch.json is created");
+    }).then(data => {
+        console.log(data);
+
+        return outputFileGenerator("teamsWonTossMatch.json", calculatedValues.wonTossAndMatch, "outputfile teamsWonTossMatch.json is created");
+    }).then(data => {
+        console.log(data)
+
+        return outputFileGenerator("playerOfMatch.json", calculatedValues.winnerOfPlayerOfMatch, "outputfile playerOfMatch.json is created");
+    }).then(data => {
+        console.log(data);
+
+        return outputFileGenerator("strikeRate.json", calculatedValues.strikeRate, "outputfile strikeRate.json is created");
+    }).then(data => {
+        console.log(data);
+
+        return outputFileGenerator("highestDismissedPlayer.json", calculatedValues.playerDismissed, "outputfile highestDismissedPlayer.json is created");
+    }).then(data => {
+        console.log(data);
+
+        return outputFileGenerator("bestSuperOverBowler.json", calculatedValues.superOverEconomy, "outputfile bestSuperOverBowler.json is created");
+    }).then(data => {
+        console.log(data);
+
+    }).catch(error => {
+        console.log(error);
+    });
+
+
+
+
+
+
+
+
+
+
+    /* outputFileGenerator("src/public/output/matchesPerYear.json", calculatedValues.matchPlayedPerYear, "outputfile matchesPerYear.json is created");
 
     outputFileGenerator("src/public/output/matchesWonPerTeam.json", calculatedValues.matchWonPerTeam, "outputfile matchesWonPerTeam.json is created");
 
@@ -58,7 +110,7 @@ function convertAndSave(calculatedValues) {
 
     outputFileGenerator("src/public/output/highestDismissedPlayer.json", calculatedValues.playerDismissed, "outputfile highestDismissedPlayer.json is created");
 
-    outputFileGenerator("src/public/output/bestSuperOverBowler.json", calculatedValues.superOverEconomy, "outputfile bestSuperOverBowler.json is created");
+    outputFileGenerator("src/public/output/bestSuperOverBowler.json", calculatedValues.superOverEconomy, "outputfile bestSuperOverBowler.json is created"); */
 }
 
 main();
