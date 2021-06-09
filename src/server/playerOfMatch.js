@@ -33,7 +33,7 @@ function PlayerOfMatch(matchesArray) {
                     return player2[1] - player1[1];
                 })
 
-            accumulator[season] = maxPlayerOfMatch[0][0];
+            accumulator[season] = { [maxPlayerOfMatch[0][0]] : maxPlayerOfMatch[0][1] };
 
             return accumulator;
 
