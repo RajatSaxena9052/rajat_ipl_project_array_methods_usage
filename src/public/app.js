@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     fetch('/api/matchesPlayedPerYear')
-        .then((resp) => resp.json())
+        .then((res) => res.json())
         .then((MatchesPlayedPerYear) => {
 
             Highcharts.chart('matchesPlayedPerYear', {
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
     fetch('/api/matchesWonPerTeamPerYear')
-        .then((resp) => resp.json())
+        .then((res) => res.json())
         .then((matchesWonPerTeam) => {
 
             let teamNamesPerSeason = Object.values(matchesWonPerTeam), season = Object.keys(matchesWonPerTeam);
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
     fetch("/api/extraRuns2016")
-        .then((resp) => resp.json())
+        .then((res) => res.json())
         .then((extraRuns2016) => {
             let year = 2016;
 
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
     fetch("/api/economicalBowlers2015")
-        .then((resp) => resp.json())
+        .then((res) => res.json())
         .then((economicalBowlers2015) => {
 
             let name = Object.entries(economicalBowlers2015).reduce((accumulator, name) => {
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
     fetch("/api/teamsWonTossMatch")
-        .then((resp) => resp.json())
+        .then((res) => res.json())
         .then((teamsWonTossMatch) => {
 
             Highcharts.chart('teamsWonTossMatch', {
