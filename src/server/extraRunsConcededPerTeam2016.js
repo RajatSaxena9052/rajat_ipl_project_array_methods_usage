@@ -17,7 +17,7 @@ function extraRunsConcededPerTeam2016(matchArray, deliveriesArray) {
             let matchId = deliveries.match_id
 
             if (matchIds.has(matchId)) {
-                let teamName = deliveries['batting_team'];
+                let teamName = deliveries['bowling_team'];
 
                 if (accumulator[teamName] === undefined) {
                     accumulator[teamName] = parseInt(deliveries['extra_runs']);
