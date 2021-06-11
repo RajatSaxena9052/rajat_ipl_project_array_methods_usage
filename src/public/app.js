@@ -6,11 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             Highcharts.chart('matchesPlayedPerYear', {
                 chart: {
-                    type: 'pie',
-                    options3d: {
-                        enabled: true,
-                        alpha: 45
-                    }
+                    type: 'column'
                 },
                 title: {
                     text: '1. Matches played in each year'
@@ -18,18 +14,45 @@ document.addEventListener('DOMContentLoaded', function () {
                 subtitle: {
                     text: 'Source: <a href="https://www.kaggle.com/nowke9/ipldata/data?select=matches.csv" target="_blank">IPL Dataset</a>'
                 },
-                plotOptions: {
-                    pie: {
-                        innerSize: 100,
-                        depth: 45
+                xAxis: {
+                    type: 'category',
+                    labels: {
+                        rotation: -45,
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
                     }
                 },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Number of matches '
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    pointFormat: 'Matches played : <b>{point.y:.0f}</b>'
+                },
                 series: [{
-                    name: 'number of matches',
-                    data: Object.entries(MatchesPlayedPerYear)
+                    name: 'Population',
+                    data: Object.entries(MatchesPlayedPerYear),
+                    dataLabels: {
+                        enabled: true,
+                        rotation: -90,
+                        color: '#FFFFFF',
+                        align: 'right',
+                        format: '{point.y:.0f}', // one decimal
+                        y: 10, // 10 pixels down from the top
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
                 }]
             });
-
         });
 
     fetch('/api/matchesWonPerTeamPerYear')
@@ -72,19 +95,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
             }, []);
 
-            Highcharts.chart("matchesWonPerTeamPerYear", {
+            Highcharts.chart('matchesWonPerTeamPerYear', {
                 chart: {
-                    type: 'column'
+                    type: 'bar'
                 },
                 title: {
                     text: '2. Matches won by each team over all the seasons of IPL'
                 },
-                subtitle: {
-                    text: 'Source: <a href="https://www.kaggle.com/nowke9/ipldata/data?select=matches.csv" target="_blank">IPL Dataset</a>'
-                },
                 xAxis: {
-                    categories: season,
-                    crosshair: true
+                    categories: season
                 },
                 yAxis: {
                     min: 0,
@@ -92,22 +111,17 @@ document.addEventListener('DOMContentLoaded', function () {
                         text: 'Matches Won'
                     }
                 },
-                tooltip: {
-                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                        '<td style="padding:0"><b>{point.y:.0f}</b></td></tr>',
-                    footerFormat: '</table>',
-                    shared: true,
-                    useHTML: true
+                legend: {
+                    reversed: true
                 },
                 plotOptions: {
-                    column: {
-                        pointPadding: 0.2,
-                        borderWidth: 0
+                    series: {
+                        stacking: 'normal'
                     }
                 },
-                series: series,
+                series: series
             });
+
 
         });
 
